@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villatter</title>
+    <link rel="stylesheet" th:href="@{/resources/css/normalize.css}">
+    <link rel="stylesheet" th:href="@{/resources/css/font-awesome.css}">
+    <link rel="stylesheet" th:href="@{/resources/css/site.css}">
+    <link rel="stylesheet" th:href="@{/resources/css/authorization.css}">
+    <script th:src="@{/resources/js/jquery-3.6.0.js}"></script>
+    <script th:src="@{/resources/js/site.js}" defer></script>
+</head>
+<body>
+<th:block th:fragment="template(breadCrumbs)">
+    <nav>
+        <div class="company-logo">
+            <img th:src="@{/resources/image/logo.png}" alt="Basilisk">
+            <h1>
+                Trade of <span class="bold">Villatter</span>
+            </h1>
+        </div>
+        <a class="menu category" th:href="@{/dashboard}">
+            <i class="far fa-chart-bar "></i>
+            <span>Dashboard</span>
+        </a>
+        <a class="menu category" th:href="@{/pengajuan}">
+            <i class="far fa-envelope"></i>
+            <span>Pengajuan</span>
+        </a>
+        <a class="menu supplier" th:href="@{/selesai}">
+            <i class="far fa-envelope-open"></i>
+            <span>Selesai</span>
+        </a>
+        <a class="menu salesman" th:href="@{/penduduk}">
+            <i class="fas fa-user-tie"></i>
+            <span>Penduduk</span>
+        </a>
+    </nav>
+    <header>
+        <div class="bread-crumbs">
+            <span th:text="${breadCrumbs}"></span>
+        </div>
+        <div class="user-wrapper">
+            <div class="user">
+                <div class="change-password">
+                    <a class="full-name"
+                       th:text="${#authentication.getPrincipal().getUsername()}">
+                        Anonymous
+                    </a>
+                    <span class="role" th:text="${#authentication.getAuthorities()}">Guest</span>
+                </div>
+                <a class="full-name"
+                   th:href="@{/account/changePasswordForm(username=${#authentication.getPrincipal().getUsername()})}">
+                    Change Password ?
+                </a>
+            </div>
+            <div class="sign-out">
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </header>
+    <footer>
+        Copyright &copy; 2024
+        <span class="author">Rama Fadillah</span>
+        Allright Reserved
+    </footer>
+</th:block>
+
+<th:block th:fragment="tableHeader (headers)">
+    <thead>
+    <tr>
+        <th>Action</th>
+        <th th:each="header : ${headers}" th:text="${header}"></th>
+    </tr>
+    </thead>
+</th:block>
+
+<th:block th:fragment="tableFooter (columnNumber, currentPage, totalPages, actionUrl, urlParameters)">
+    <tfoot>
+    <tr>
+        <td th:attr="colspan=${columnNumber}">
+            <div class="pagination">
+                <div th:text="|page ${currentPage} of ${totalPages}|"></div>
+                <div th:if="${totalPages != 0}">
+                    <a th:if="${currentPage > 1}" th:href="|@{${actionUrl}(page=${currentPage-1})}${urlParameters}|">
+                        <i class="fas fa-angle-left"></i>
+                    </a>
+                    <a class="numbers" th:each="loop:${#numbers.sequence(1,totalPages)}"
+                       th:href="|@{${actionUrl}(page=${loop})}${urlParameters}|"
+                       th:text="${loop}"></a>
+                    <a th:if="${currentPage < totalPages}" th:href="|@{${actionUrl}(page=${currentPage+1})}${urlParameters}|">
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </td>
+    </tr>
+    </tfoot>
+</th:block>
+<header th:fragment="account-header" class="company-logo">
+    <img th:src="@{/resources/image/logo.png}" alt="Basilisk">
+    <h1>
+        Trade of <span class="bold">Villatter</span>
+    </h1>
+</header>
+</body>
+</html>

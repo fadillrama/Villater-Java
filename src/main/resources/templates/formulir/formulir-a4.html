@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head}">
+</head>
+<body class="main-body authentication-body-letter">
+<div class="authentication-wrapper">
+    <main class="form-letter">
+        <h1>Formulir A4</h1>
+        <form class="upsert-form" method="post" th:action="@{/formulir/insertAEmpat}" th:object="${dto}">
+            <input type="hidden" th:field="*{idSurat}">
+            <input type="hidden" th:field="*{nikPenduduk}">
+            <table th:attr="data-action=${type}" class="table-letter">
+                <tbody>
+                <tr>
+                    <td><label>Nama Depan*</label></td>
+                    <td>
+                        <input type="text" th:field="*{namaDepanBaby}">
+                    </td>
+                </tr>
+                <tr><td></td><td><div class="field-validation-error" th:errors="*{namaDepanBaby}"></div></td></tr>
+                <tr>
+                    <td><label>Nama Tengah*</label></td>
+                    <td>
+                        <input type="text" th:field="*{namaTengahBaby}">
+                    </td>
+                </tr>
+                <tr><td></td><td><div class="field-validation-error" th:errors="*{namaTengahBaby}"></div></td></tr>
+                <tr>
+                    <td><label>Nama Belakang*</label></td>
+                    <td>
+                        <input type="text" th:field="*{namaBelakangBaby}">
+                    </td>
+                </tr>
+                <tr><td></td><td><div class="field-validation-error" th:errors="*{namaBelakangBaby}"></div></td></tr>
+                <tr>
+                    <td><label>Tempat Lahir*</label></td>
+                    <td>
+                        <input type="text" th:field="*{tempatLahirBaby}">
+                    </td>
+                </tr>
+                <tr><td></td><td><div class="field-validation-error" th:errors="*{tempatLahirBaby}"></div></td></tr>
+                <tr>
+                    <td><label>Tanggal Lahir*</label></td>
+                    <td>
+                        <input type="date" th:field="*{tanggalLahirBaby}">
+                    </td>
+                </tr>
+                <tr><td></td><td><div class="field-validation-error" th:errors="*{tanggalLahirBaby}"></div></td></tr>
+                <tr>
+                    <td><label>Jenis Kelamin*</label></td>
+                    <td>
+                        <select th:field="*{jenisKelaminBaby}">
+                            <option th:value=null>No Specific Level</option>
+                            <option th:value="L">Laki-Laki</option>
+                            <option th:value="P">Perempuan</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr><td></td><td><div class="field-validation-error" th:errors="*{jenisKelaminBaby}"></div></td></tr>
+                <tr>
+                    <td><label>Agama*</label></td>
+                    <td>
+                        <input type="text" th:field="*{agamaBaby}">
+                    </td>
+                </tr>
+                <tr><td></td><td><div class="field-validation-error" th:errors="*{agamaBaby}"></div></td></tr>
+                <tr>
+                    <td class="textarea-label"><label>Keperluan</label></td>
+                    <td>
+                        <textarea th:field="*{keperluan}"></textarea>
+                    </td>
+                </tr>
+                <tr><td></td><td><div class="field-validation-error" th:errors="*{keperluan}"></div></td></tr>
+                </tbody>
+            </table>
+            <button type="submit" class="blue-button">Buat Surat</button>
+        </form>
+    </main>
+</div>
+</body>
+</html>

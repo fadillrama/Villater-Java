@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head}">
+</head>
+<body class="authentication-body">
+<div class="authentication-wrapper">
+    <main>
+        <h1>Cek NIK</h1>
+        <div class="field-validation-error" th:if="${message != null}" th:text="${message}"></div>
+        <form th:action="@{/check/pilihSurat}" method="post">
+            <input type="text" placeholder="Nik..." name="nik" th:value="${nik}">
+            <button type="submit"> Cek </button>
+        </form>
+        <div class="link-container">
+            <a th:href="@{/account/loginForm}">Login as Admin</a>
+        </div>
+    </main>
+</div>
+</body>
+</html>

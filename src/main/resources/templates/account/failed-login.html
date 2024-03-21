@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head}">
+</head>
+<body class="authentication-body">
+<div class="authentication-wrapper">
+    <header th:replace="~{layout :: account-header}">
+    </header>
+    <main>
+        <h1>Login Failed</h1>
+        <p>
+            Username atau Password anda salah !
+            Pastikan Username atau Password anda benar.
+        </p>
+        <div>
+            <a th:href="@{/account/loginForm}">Kembali ke halaman Login</a>
+        </div>
+    </main>
+</div>
+</body>
+</html>

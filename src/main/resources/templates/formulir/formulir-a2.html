@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head}">
+</head>
+<body class="main-body authentication-body-letter">
+<div class="authentication-wrapper">
+    <main class="form-letter">
+        <h1>Formulir A2</h1>
+        <form class="upsert-form" method="post" th:action="@{/formulir/insertADua}" th:object="${dto}">
+            <input type="hidden" th:field="*{idSurat}">
+            <input type="hidden" th:field="*{nikPenduduk}">
+            <table th:attr="data-action=${type}" class="table-letter">
+                <tbody>
+                <tr>
+                    <td><label>Model*</label></td>
+                    <td>
+                        <input type="text" th:field="*{model}">
+                    </td>
+                </tr>
+                <tr><td></td><td><div class="field-validation-error" th:errors="*{model}"></div></td></tr>
+                <tr>
+                    <td><label>Merek*</label></td>
+                    <td>
+                        <input type="text" th:field="*{merek}">
+                    </td>
+                </tr>
+                <tr><td></td><td><div class="field-validation-error" th:errors="*{merek}"></div></td></tr>
+                <tr>
+                    <td><label>Roda*</label></td>
+                    <td>
+                        <input type="number" th:field="*{roda}">
+                    </td>
+                </tr>
+                <tr><td></td><td><div class="field-validation-error" th:errors="*{roda}"></div></td></tr>
+                <tr>
+                    <td><label>Warna*</label></td>
+                    <td>
+                        <input type="text" th:field="*{warna}">
+                    </td>
+                </tr>
+                <tr><td></td><td><div class="field-validation-error" th:errors="*{warna}"></div></td></tr>
+                <tr>
+                    <td><label>No Polisi*</label></td>
+                    <td>
+                        <input type="text" th:field="*{noPolisi}">
+                    </td>
+                </tr>
+                <tr><td></td><td><div class="field-validation-error" th:errors="*{noPolisi}"></div></td></tr>
+                <tr>
+                    <td class="textarea-label"><label>Keperluan*</label></td>
+                    <td>
+                        <textarea th:field="*{keperluan}"></textarea>
+                    </td>
+                </tr>
+                <tr><td></td><td><div class="field-validation-error" th:errors="*{keperluan}"></div></td></tr>
+                </tbody>
+            </table>
+            <button type="submit" class="blue-button">Buat Surat</button>
+        </form>
+    </main>
+</div>
+</body>
+</html>

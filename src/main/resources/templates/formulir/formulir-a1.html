@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head}">
+</head>
+<body class="main-body authentication-body-letter">
+<div class="authentication-wrapper">
+    <main class="form-letter">
+        <h1>Formulir A1</h1>
+        <form class="upsert-form" method="post" th:action="@{/formulir/insertASatu}" th:object="${dto}">
+            <input type="hidden" th:field="*{idSurat}">
+            <input type="hidden" th:field="*{nikPenduduk}">
+            <table th:attr="data-action=${type}" class="table-letter">
+                <tbody>
+                <tr>
+                    <td class="textarea-label"><label>Keperluan*</label></td>
+                    <td>
+                        <textarea th:field="*{keperluan}"></textarea>
+                    </td>
+                </tr>
+                <tr><div class="field-validation-error" th:errors="*{keperluan}"></div></tr>
+                </tbody>
+            </table>
+            <div class="field-validation-error" th:errors="*{keperluan}"></div>
+            <button type="submit" class="blue-button">Buat Surat</button>
+        </form>
+    </main>
+</div>
+</body>
+</html>

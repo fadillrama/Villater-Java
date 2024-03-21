@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head}">
+</head>
+<body class="main-body">
+<main>
+    <div class="grid-container category-index">
+        <form class="filter" method="get" th:action="@{/penduduk/index}">
+            <input type="text" placeholder="Nama..." name="nama" th:value="${nama}">
+            <button type="submit" class="blue-button">Search</button>
+        </form>
+        <a th:href="@{/penduduk/upsertForm}" class="blue-button create-button">Tambah Penduduk Baru</a>
+        <table>
+            <th:block th:replace="~{layout :: tableHeader (${tableHeaders})}"></th:block>
+            <tbody>
+            <tr th:each="row : ${grid}" th:object="${row}">
+                <td>
+                    <a class="blue-button update-button" th:href="@{/penduduk/upsertForm(nik=*{nik})}">
+                        Update
+                    </a>
+                    <a class="blue-button delete-button" th:href="@{/penduduk/delete(nik=*{nik})}">
+                        Delete
+                    </a>
+                    <a class="blue-button delete-button" th:href="@{/penduduk/detail(nik=*{nik})}">
+                        Detail
+                    </a>
+                </td>
+                <td th:text="*{nik}"></td>
+                <td th:text="*{fullName}"></td>
+                <td th:text="|*{tempatLahir}, *{#temporals.format(tanggalLahir, 'dd MMMM yyyy')}|"></td>
+                <td th:text="*{jenisKelamin}"></td>
+                <td th:text="*{alamat}"></td>
+            </tr>
+            </tbody>
+            <th:block th:replace="~{layout :: tableFooter (${columnSpan}, ${currentPage}, ${totalPages}, ${pageActionUrl}, ${pageUrlParameters})}"></th:block>
+        </table>
+    </div>
+</main>
+<th:block th:replace="~{layout :: template (${breadCrumbs})}"></th:block>
+</body>
+</html>

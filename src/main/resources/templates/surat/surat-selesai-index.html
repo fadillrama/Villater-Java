@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head}">
+</head>
+<body class="main-body">
+<th:block th:replace="~{layout :: template (${breadCrumbs})}"></th:block>
+<main>
+    <div class="grid-container category-index">
+        <form class="filter" method="get" th:action="@{/selesai/index}">
+            <input type="text" placeholder="Nama..." name="nama" th:value="${nama}">
+            <input type="text" placeholder="Jenis Surat..." name="jenisSurat" th:value="${jenisSurat}">
+            <button type="submit" class="blue-button">Search</button>
+        </form>
+        <table>
+            <th:block th:replace="~{layout :: tableHeader (${tableHeaders})}"></th:block>
+            <tbody>
+            <tr th:each="row : ${grid}" th:object="${row}">
+                <td>
+                    <a class="blue-button update-button" th:href="@{/selesai/generatePdfLetter(noSurat=*{noSurat})}">
+                        Download Letter
+                    </a>
+                </td>
+                <td th:text="*{noSurat}"></td>
+                <td th:text="*{jenisSurat}"></td>
+                <td th:text="*{namaPengaju}"></td>
+                <td th:text="*{#temporals.format(tanggalDiajukan, 'dd MMMM yyyy')}"></td>
+                <td th:text="*{#temporals.format(tanggalDisetujui, 'dd MMMM yyyy')}"></td>
+                <td th:text="*{keperluan}"></td>
+                <td th:text="*{status}"></td>
+            </tr>
+            </tbody>
+            <th:block th:replace="~{layout :: tableFooter (${columnSpan}, ${currentPage}, ${totalPages}, ${pageActionUrl}, ${pageUrlParameters})}"></th:block>
+        </table>
+    </div>
+</main>
+</body>
+</html>

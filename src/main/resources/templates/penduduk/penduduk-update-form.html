@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head}">
+</head>
+<body class="main-body">
+<th:block th:replace="~{layout :: template('Penduduk Form')}"></th:block>
+<main>
+    <form class="upsert-form" method="post" th:action="@{/penduduk/update}" th:object="${dto}">
+        <table th:attr="data-action=${type}">
+            <tbody>
+            <tr>
+                <td><label>NIK</label></td>
+                <td>
+                    <input type="text" th:field="*{nik}" class="readonly-id" readonly>
+                    <div class="field-validation-error" th:errors="*{nik}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Nama Depan*</label></td>
+                <td>
+                    <input type="text" th:field="*{namaDepan}">
+                    <div class="field-validation-error" th:errors="*{namaDepan}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Nama Tengah*</label></td>
+                <td>
+                    <input type="text" th:field="*{namaTengah}">
+                    <div class="field-validation-error" th:errors="*{namaTengah}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Nama Belakang*</label></td>
+                <td>
+                    <input type="text" th:field="*{namaBelakang}">
+                    <div class="field-validation-error" th:errors="*{namaBelakang}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Tempat Lahir</label></td>
+                <td>
+                    <input type="text" th:field="*{tempatLahir}">
+                    <div class="field-validation-error" th:errors="*{tempatLahir}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Tanggal Lahir*</label></td>
+                <td>
+                    <input type="date" th:field="*{tanggalLahir}">
+                    <div class="field-validation-error" th:errors="*{tanggalLahir}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Jenis Kelamin*</label></td>
+                <td>
+                    <select th:field="*{jenisKelamin}">
+                        <option th:value=null>No Specific Level</option>
+                        <option th:value="L">Laki-Laki</option>
+                        <option th:value="P">Perempuan</option>
+                    </select>
+                    <div class="field-validation-error" th:errors="*{jenisKelamin}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Agama*</label></td>
+                <td>
+                    <input type="text" th:field="*{agama}">
+                    <div class="field-validation-error" th:errors="*{agama}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Jalan*</label></td>
+                <td>
+                    <input type="text" th:field="*{jalan}">
+                    <div class="field-validation-error" th:errors="*{jalan}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Dusun*</label></td>
+                <td>
+                    <input type="text" th:field="*{dusun}">
+                    <div class="field-validation-error" th:errors="*{dusun}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>RT*</label></td>
+                <td>
+                    <input type="number" th:field="*{rt}">
+                    <div class="field-validation-error" th:errors="*{rt}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>RW*</label></td>
+                <td>
+                    <input type="number" th:field="*{rw}">
+                    <div class="field-validation-error" th:errors="*{rw}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Desa*</label></td>
+                <td>
+                    <input type="text" th:field="*{desa}">
+                    <div class="field-validation-error" th:errors="*{desa}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Kecamatan*</label></td>
+                <td>
+                    <input type="text" th:field="*{kecamatan}">
+                    <div class="field-validation-error" th:errors="*{kecamatan}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Kabupaten*</label></td>
+                <td>
+                    <input type="text" th:field="*{kabupaten}">
+                    <div class="field-validation-error" th:errors="*{kabupaten}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Kewarganegaraan*</label></td>
+                <td>
+                    <input type="text" th:field="*{kewarganegaraan}">
+                    <div class="field-validation-error" th:errors="*{kewarganegaraan}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>No KK*</label></td>
+                <td>
+                    <input type="text" th:field="*{noKK}">
+                    <div class="field-validation-error" th:errors="*{noKK}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Status Kawin*</label></td>
+                <td>
+                    <select th:field="*{statusKawin}">
+                        <option th:value=null>No Specific Level</option>
+                        <option th:value="SK">Sudah Kawin</option>
+                        <option th:value="BK">Belum Kawin</option>
+                        <option th:value="D">Duda</option>
+                        <option th:value="J">Janda</option>
+                    </select>
+                    <div class="field-validation-error" th:errors="*{jenisKelamin}"></div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="blue-button">Simpan</button>
+    </form>
+</main>
+</body>
+</html>

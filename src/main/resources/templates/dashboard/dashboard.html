@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head}">
+</head>
+<body class="main-body">
+<main>
+    <div>
+        <h1 class="villatter-welcome">
+            Welcome, This is Villatter
+        </h1>
+    </div>
+    <div class="dashboard-main">
+        <div class="authentication-wrapper">
+            <main class="choose-letter">
+                <h1>Surat Selesai</h1>
+                <p class="paraghraph-dashboard">Total Surat selesai saat ini adalah <span th:text="${totalSelesai}"></span></p>
+                <td>
+                    <a class="blue-button update-button" th:href="@{/selesai}">
+                        Lihat
+                    </a>
+                </td>
+            </main>
+        </div>
+        <div class="authentication-wrapper">
+            <main class="choose-letter">
+                <h1>Surat Pengajuan</h1>
+                <p class="paraghraph-dashboard">Total Surat pengajuan saat ini adalah <span th:text="${totalPengajuan}"></span></p>
+                <td>
+                    <a class="blue-button update-button" th:href="@{/pengajuan}">
+                        Lihat
+                    </a>
+                </td>
+            </main>
+        </div>
+        <div class="authentication-wrapper">
+            <main class="choose-letter">
+                <h1>Penduduk</h1>
+                <p class="paraghraph-dashboard">Total Penduduk saat ini adalah <span th:text="${totalPenduduk}"></span></p>
+                <td>
+                    <a class="blue-button update-button" th:href="@{/penduduk}">
+                        Lihat
+                    </a>
+                </td>
+            </main>
+        </div>
+    </div>
+</main>
+<th:block th:replace="~{layout :: template (${breadCrumbs})}"></th:block>
+</body>
+</html>

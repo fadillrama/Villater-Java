@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{layout :: head}"></head>
+<body class="main-body">
+<main>
+    <div class="grid-container salesman-detail">
+        <section class="header-info" th:object="${parent}">
+            <div>Nik: <span th:text="*{nik}"></span></div>
+            <div>Full Name: <span th:text=${headerFullName}></span></div>
+        </section>
+        <form method="get" class="filter" th:action="@{/penduduk/detail}">
+            <input type="hidden" name="nik" th:attr="value=${parentId}">
+            <input type="text" name="jenisSurat" placeholder="Jenis Surat..." th:attr="value=${jenisSurat}">
+            <button class="blue-button" type="submit">Search</button>
+        </form>
+        <table>
+            <th:block th:replace="~{layout :: tableHeader (${tableHeaders})}"></th:block>
+            <tbody>
+            <tr th:each="row : ${grid}" th:object="${row}">
+                <td th:text="*{noSurat}"></td>
+                <td th:text="*{noSurat}"></td>
+                <td th:text="*{jenisSurat}"></td>
+                <td th:text="*{#temporals.format(tanggalDiajukan, 'dd MMMM yyyy')}"></td>
+                <td th:text="*{#temporals.format(tanggalDisetujui, 'dd MMMM yyyy')}"></td>
+                <td th:text="*{keperluan}"></td>
+                <td th:text="*{status}"></td>
+            </tr>
+            </tbody>
+            <th:block th:replace="~{layout :: tableFooter (${columnSpan}, ${currentPage}, ${totalPages}, ${pageActionUrl}, ${pageUrlParameters})}"></th:block>
+        </table>
+    </div>
+</main>
+<th:block th:replace="~{layout :: template (${breadCrumbs})}"></th:block>
+</body>
+</html>

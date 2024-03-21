@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{layout :: head}"></head>
+<body class="main-body">
+<main>
+    <div class="fail-container">
+        <p>Tidak bisa menghapus Penduduk ini. Karena ada <span th:text="${dependentRiwayat}"></span> data Riwayat .</p>
+    </div>
+    <a class="blue-button" th:href="@{/penduduk/index}">back to index</a>
+</main>
+<th:block th:replace="~{layout :: template (${breadCrumbs})}"></th:block>
+</body>
+</html>
